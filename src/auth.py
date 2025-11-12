@@ -65,4 +65,37 @@ def get_token(client_id: str, client_secret: str, code: str, redirect_uri: str) 
         The Spotify access token.
     """
     token_url = "https://accounts.spotify.com/api/token"
-    auth_header = base64.b64encode(f"{client_id}:{cli
+    auth_header = base64.b64encode(f"{client_id}:{client_secret}".encode()).decode()
+    headers = {"Authorization": f"Basic {auth_header}"}
+
+    data = {
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": redirect_uri,
+    }
+
+    response = requests.post(token_url, headers=headers, data=data)
+    if response.status_code != 200:
+        raise Exception(
+            f"Failed to get token: {response.status_code} {response.text}"
+        )
+
+    return response.json().get("access_token")
+
+
+if __name__ == "__main__":
+    # Example usage
+    CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
+    CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
+    REDIRECT_URI = "http://localhost:8888/callback"  # example redirect URI
+
+    if not CLIENT_ID or not CLIENT_SECRET:
+        print("⚠️  Please set SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET in your environment.")
+        exit(1)
+
+    print("Visit this URL to authorize access:")
+    print(get_auth_url(CLIENT_ID, REDIRECT_URI))
+
+    code = input("\nAfter approving, paste the 'code' parameter from the redirect URL here:\n> ").strip()
+    token = get_token(CLIENT_ID, CLIENT_SECRET, code, REDIRECT_URI)
+    print("\n✅ Your access token:\n", token)
