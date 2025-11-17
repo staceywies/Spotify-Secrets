@@ -1,4 +1,3 @@
-# src/auth.py
 from config.config import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SCOPE_STRING
 from spotipy.oauth2 import SpotifyOAuth
 
