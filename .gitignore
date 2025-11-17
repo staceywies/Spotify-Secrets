@@ -1,34 +1,15 @@
-# Python
+# Python cache files
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-*.env
+
+# Virtual environments
 env/
 venv/
-ENV/
 
-# Config/credentials
-config/config.json
+# Environment / secret files
+.env
 config/*.secret
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
 
 # OS files
 .DS_Store
 Thumbs.db
-
-# IDE / Editor files
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# Logs
-*.log
-
-# Build / Distribution
-build/
-dist/
-*.egg-info/

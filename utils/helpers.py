@@ -8,9 +8,9 @@ Handles formatting, printing, and other reusable helpers.
 from typing import List, Dict
 
 
-def format_track(track: Dict) -> str:
+def format_track(track: dict) -> str:
     """
-    Format a single track dictionary into a readable string.
+    Format a single track dictionary into a readable string (no URL).
 
     Parameters
     ----------
@@ -19,14 +19,16 @@ def format_track(track: Dict) -> str:
         - name
         - artists
         - album
-        - url
 
     Returns
     -------
     str
         Formatted string for display.
     """
-    return f"🎵 {track['name']} — {track['artists']} ({track['album']})\n   {track['url']}"
+    artists = ", ".join([artist['name'] for artist in track['artists']])
+    album_name = track['album']['name']
+
+    return f"🎵 {track['name']} — {artists} ({album_name})"
 
 
 def display_top_tracks(tracks: List[Dict]) -> None:
