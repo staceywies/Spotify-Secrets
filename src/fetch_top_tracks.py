@@ -32,7 +32,7 @@ def get_top_tracks(limit=5, time_range=TIME_RANGE):
     ))
 
     # Fetch top tracks
-    top_tracks = sp.current_user_top_tracks(limit=limit, time_range=TIME_RANGE)
+    top_tracks = sp.current_user_top_tracks(limit=limit, time_range=time_range)
 
     # Loop through each track and print formatted string
     print("\nYour Top Tracks:\n")
