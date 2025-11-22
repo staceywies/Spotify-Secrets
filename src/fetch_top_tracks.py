@@ -12,6 +12,8 @@ from utils.helpers import format_track
 from dotenv import load_dotenv
 load_dotenv()
 TIME_RANGE = os.getenv("SPOTIFY_TIMEFRAME", "long_term")  # default to long_term
+LISTENING_LIMIT = int(os.getenv("SPOTIFY_LIMIT", 5))
+
 
 def get_top_tracks(limit=5, time_range=TIME_RANGE):
     """
@@ -40,4 +42,5 @@ def get_top_tracks(limit=5, time_range=TIME_RANGE):
         print(format_track(track))
 
 if __name__ == "__main__":
-    get_top_tracks()
+    get_top_tracks(limit=LISTENING_LIMIT, time_range=TIME_RANGE)
+
