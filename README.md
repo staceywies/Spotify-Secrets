@@ -3,7 +3,7 @@ A lightweight Python tool for analyzing personal Spotify listening habits.
 
 MusicAnalytics is a small project that uses the Spotify Web API to fetch your top tracks over different time ranges.
 
-1️⃣ Create a Spotify Developer App
+## 1️⃣ Create a Spotify Developer App
 
 Go to https://developer.spotify.com/dashboard
 
@@ -16,7 +16,7 @@ http://127.0.0.1:8888/callback
 
 Copy your Client ID and Client Secret
 
-2️⃣ Add Them to .env
+## 2️⃣ Add Them to .env
 
 Create a .env file in your project root with:
 
@@ -24,14 +24,14 @@ SPOTIFY_CLIENT_ID=your_id_here
 SPOTIFY_CLIENT_SECRET=your_secret_here
 SPOTIFY_REDIRECT_URI=http://127.0.0.1:8888/callback
 
-# Optional settings
+### Optional settings
 SPOTIFY_TIMEFRAME=long_term
 SPOTIFY_LIMIT=5
 
-3️⃣ Install Dependencies
+## 3️⃣ Install Dependencies
 pip install spotipy python-dotenv
 
-4️⃣ Authenticate
+## 4️⃣ Authenticate
 
 Run:
 
